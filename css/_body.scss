@@ -1,0 +1,251 @@
+@import "./_variables.scss";
+/////////////////////////////////////////////////////
+// Font:
+@import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&subset=latin-ext");
+/////////////////////////////////////////////////////
+// Default page values:
+* {
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+html {
+    min-height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    line-height: 1.2;
+}
+
+body {
+    /////////////////////////////////////////////////////
+    // Base values
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    margin: 0px;
+    padding: 0px;
+    background-color: $bg-primary;
+    /////////////////////////////////////////////////////
+    // Text values
+    font-family: "Lato", sans-serif;
+    color: $font-primary;
+    font-size: 20px;
+}
+
+/////////////////////////////////////////////////////////
+// Focus:
+.focus {
+    outline: none;
+    box-shadow: 0em 0em 1em rgba($color-default, 0.4);
+}
+
+/////////////////////////////////////////////////////
+// Default text values:
+a {
+    color: mix($link-primary, $link-underline, 80);
+    position: relative;
+    z-index: 2;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 1px;
+    transition: color ease 0.3s;
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 1px;
+        left: 0;
+        bottom: 0;
+        background-color: mix($link-primary, $link-underline, 20);
+        transition: all ease 0.3s;
+    }
+    &:link,
+    &:visited {
+        color: mix($link-primary, $link-underline, 80);
+    }
+    &:active,
+    &:hover {
+        color: $link-hover;
+        &::after {
+            height: 100%;
+        }
+    }
+}
+
+p {
+    display: block;
+    margin: 0em 0em 0.4em 0em;
+    padding: 0.1em 0.5em;
+    font-size: 1em;
+    &:first-child {
+        margin-top: 0.4em;
+    }
+}
+
+b {
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/////////////////////////////////////////////////////
+// Text align:
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+@each $name,
+$size in $screen-sizes {
+    @media screen and (min-width: #{$size}) {
+        .text-center-#{$name} {
+            text-align: center;
+        }
+        .text-left-#{$name} {
+            text-align: left;
+        }
+        .text-right-#{$name} {
+            text-align: right;
+        }
+        .text-justify-#{$name} {
+            text-align: justify;
+        }
+    }
+}
+
+.heading {
+    color: $font-secondary;
+    font-weight: normal;
+    padding: 0.1em 0.5em;
+    a {
+        &::after {
+            display: none;
+        }
+        &:active,
+        &:hover {
+            color: mix($font-secondary, $link-hover, 50);
+        }
+    }
+}
+
+h1,
+.h1 {
+    @extend .heading;
+    margin: 1em 0em 0.6em 0em;
+    font-size: 2.0em;
+    &:first-child {
+        margin-top: 0.6em;
+    }
+}
+
+h2,
+.h2 {
+    @extend .heading;
+    margin: 1em 0em 0.5em 0em;
+    font-size: 1.8em;
+    &:first-child {
+        margin-top: 0.5em;
+    }
+}
+
+h3,
+.h3 {
+    margin: 1em 0em 0.4em 0em;
+    font-size: 1.6em;
+    @extend .heading;
+    &:first-child {
+        margin-top: 0.4em;
+    }
+}
+
+h4,
+.h4 {
+    @extend .heading;
+    margin: 1em 0em 0.3em 0em;
+    font-size: 1.4em;
+    &:first-child {
+        margin-top: 0.3em;
+    }
+}
+
+h5,
+.h5 {
+    @extend .heading;
+    margin: 1em 0em 0.2em 0em;
+    font-size: 1.2em;
+    &:first-child {
+        margin-top: 0.5em;
+    }
+}
+
+h6,
+.h6 {
+    @extend .heading;
+    margin: 1em 0em 0.1em 0em;
+    font-size: 1.0em;
+    &:first-child {
+        margin-top: 0.1em;
+    }
+}
+
+/////////////////////////////////////////////////////////
+// Margin:
+.m-t {
+    margin-top: 0.5em;
+}
+
+.m-r {
+    margin-right: 0.5em;
+}
+
+.m-l {
+    margin-left: 0.5em;
+}
+
+.m-b {
+    margin-bottom: 0.5em;
+}
+
+.margin {
+    @extend .m-t;
+    @extend .m-r;
+    @extend .m-b;
+    @extend .m-l;
+}
+
+/////////////////////////////////////////////////////////
+// Padding:
+.p-t {
+    padding-top: 0.5em;
+}
+
+.p-r {
+    padding-right: 0.5em;
+}
+
+.p-l {
+    padding-left: 0.5em;
+}
+
+.p-b {
+    padding-bottom: 0.5em;
+}
+
+.padding {
+    @extend .p-t;
+    @extend .p-r;
+    @extend .p-b;
+    @extend .p-l;
+}

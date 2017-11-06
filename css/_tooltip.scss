@@ -1,0 +1,53 @@
+@import "./_variables.scss";
+/////////////////////////////////////////////////////////
+// Tooltips:
+*[data-toogle="tooltip"] {
+    position: relative;
+    &>.tooltip {
+        opacity: 0;
+        display: block;
+        position: absolute;
+        z-index: 100;
+        text-transform: none;
+        bottom: calc(100% + 1.5em);
+        left: calc(50% - 7.5em); // 50% - half_of_width
+        padding: 0.5em;
+        width: 15em;
+        background-color: rgba(0, 0, 0, 0.9);
+        color: rgb(210, 210, 210);
+        text-align: center;
+        font-size: 0.8em;
+        transform: scale(0.0, 0.0);
+        transition: transform 0.15s;
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -1em;
+            left: calc(50% - 0.5em);
+            width: 0em;
+            height: 0em;
+            margin-top: -0.5em;
+            border: 0.5em solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.9);
+        }
+        &.small {
+            left: calc(50% - 4em); // 50% - half_of_width
+            width: 8em;
+        }
+        &.large {
+            left: calc(50% - 12.5em); // 50% - half_of_width
+            width: 25em;
+        }
+    }
+    &:hover {
+        &>.tooltip {
+            opacity: 1;
+            transform: scale(1.0, 1.0);
+            // Do not let hover a tooltip
+            &:hover {
+                opacity: 0;
+                transform: scale(0.0, 0.0);
+            }
+        }
+    }
+}

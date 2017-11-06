@@ -1,0 +1,11 @@
+@import "./_variables.scss";
+/////////////////////////////////////////////////////////
+// Hide elements:
+@each $name,
+$size in $screen-sizes {
+    @media screen and (min-width: #{$size}) {
+        .hidden-#{$name} {
+            display: none;
+        }
+    }
+}

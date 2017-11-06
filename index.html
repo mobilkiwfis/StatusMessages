@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Status Messages</title>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/uniscale.css">
+
+    <script src="js/uniscale-alert.js"></script>
+    <script src="js/LoadingAnimation.js"></script>
+
+    <script src="js/AnimatedBackground.js"></script>
+
+    <script src="js/JsonEditor.js"></script>
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div id="background_wrap">
+        <canvas id="background_canvas"></canvas>
+    </div>
+    <!-- End of: Background -->
+
+
+    <div class="alerts-box">
+        <div class="container">
+            <div class="row flex-xs-direction-column" id="alerts-hook">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="container">
+
+        <div class="row m-t">
+            <div class="col-xs-12">
+                <h1>Status Messages</h1>
+            </div>
+            <div class="col-xs-12 p-l">
+                <label for="choose-file">
+                    <div class="btn">Open file</div>
+                </label>
+                <input id="choose-file" class="btn-open" type="file" style="display: none">
+                <button class="btn btn-save">
+                    Copy to clipboard
+                </button>
+                <button class="btn btn-succes btn-new-record">
+                    New record
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 padding" id="messages_list">
+
+                <div id="message_schemat">
+                    <div class="row p-t p-b" data-marker="message_element">
+                        <div class="col-xs-12">
+                            <button class="btn btn-danger btn-delete">X</button>
+                            <button class="btn btn-danger btn-delete-confirm hidden-xs">Y</button>
+                            <button class="btn btn-delete-cancel hidden-xs">N</button>
+                            <button class="btn btn-info btn-duplicate">Duplicate</button>
+                        </div>
+                        <div class="col-xs-12 col-m-2" data-toogle="tooltip">
+                            <input class="input input-key" type="text" name="key" value="{key_value}">
+                            <div class="tooltip small">Key value.</div>
+                        </div>
+                        <div class="col-xs-12 col-m-5" data-toogle="tooltip">
+                            <input class="input input-pl" type="text" name="key" value="{pl_value}">
+                            <div class="tooltip small">Polish version.</div>
+                        </div>
+                        <div class="col-xs-12 col-m-5" data-toogle="tooltip">
+                            <input class="input input-en" type="text" name="key" value="{en_value}">
+                            <div class="tooltip small">English version.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</body>
+
+</html>

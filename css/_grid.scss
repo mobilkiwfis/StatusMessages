@@ -1,0 +1,168 @@
+@import "./_variables.scss";
+/////////////////////////////////////////////////////
+// Grid layout:
+.container {
+    display: block;
+    width: 100%;
+    max-width: $screen-l-min;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    margin: 0em auto;
+}
+
+.container-fluid {
+    display: block;
+    min-width: 100%;
+}
+
+.flex {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    @mixin col-default {
+        display: block;
+        // In case of flex
+        &.flex {
+            display: flex;
+        }
+    }
+    @each $name,
+    $size in $screen-sizes {
+        //////////////////////////////
+        // Layout:
+        @media screen and (min-width: #{$size}) {
+            @for $i from 1 through 12 {
+                .col-#{$name}-#{$i} {
+                    @include col-default;
+                    flex-basis: #{percentage($i / 12)};
+                }
+            }
+            .col-#{$name}-min {
+                @include col-default;
+                flex-grow: initial;
+            }
+            .col-#{$name}-max {
+                @include col-default;
+                flex-grow: 1;
+            }
+            .col-#{$name}-auto {
+                @include col-default;
+                flex-grow: 0;
+            }
+        }
+        @media screen and (min-width: #{$size}) {
+            //////////////////////////////
+            // Stick together:
+            &.nowrap-#{$name} {
+                flex-wrap: nowrap;
+            }
+            &.wrap-#{$name} {
+                flex-wrap: nowrap;
+            }
+            //////////////////////////////
+            // Horizontal class for row:
+            &.center-#{$name} {
+                justify-content: space-around;
+            }
+            &.left-#{$name} {
+                justify-content: flex-start;
+            }
+            &.right-#{$name} {
+                justify-content: flex-end;
+            }
+            //////////////////////////////
+            // Vertical class for row:
+            &.stretch-#{$name} {
+                align-items: stretch;
+            }
+            &.top-#{$name} {
+                align-items: flex-start;
+            }
+            &.middle-#{$name} {
+                align-items: center;
+            }
+            &.bottom-#{$name} {
+                align-items: flex-end;
+            }
+            //////////////////////////////
+            // Horizontal class for col:
+            .col-#{$name}-push-center {
+                align-self: center;
+            }
+            .col-#{$name}-push-top {
+                align-self: flex-start;
+            }
+            .col-#{$name}-push-bottom {
+                align-self: flex-end;
+            }
+            //////////////////////////////
+            // Directions:
+            &.flex-#{$name}-direction-column {
+                flex-direction: column;
+                &.reverse {
+                    flex-direction: column-reverse;
+                }
+                &>* {
+                    width: 100%;
+                }
+            }
+            &.flex-#{$name}-direction-row {
+                flex-direction: row;
+                &.reverse {
+                    flex-direction: row-reverse;
+                }
+                &>* {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.row {
+    @extend .flex;
+    flex-basis: 100%;
+}
+
+/////////////////////////////////////////////////////////
+// Sizing:
+.height-100 {
+    height: 100%;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.height-auto {
+    height: auto;
+}
+
+.width-auto {
+    width: auto;
+}
+
+/////////////////////////////////////////////////////////
+// Wrap to bottom:
+.wrap {
+    &.bottom {
+        position: absolute;
+        bottom: 0em;
+    }
+}
+
+/////////////////////////////////////////////////////////
+// Panel:
+.panel {
+    position: relative;
+    z-index: 1;
+    background-color: $bg-secondary;
+    border: 1px solid mix($color-default, $color-mix, 70);
+    margin-bottom: 1em;
+}
+
+.panel-borderless {
+    @extend .panel;
+    border: 1px solid transparent;
+}

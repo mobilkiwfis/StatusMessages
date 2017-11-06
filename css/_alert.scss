@@ -1,0 +1,71 @@
+@import "./_variables.scss";
+/////////////////////////////////////////////////////////
+// Alerts:
+.alerts-box {
+    position: fixed;
+    z-index: 200;
+    top: 0em;
+    left: 0em;
+    width: 100%;
+    margin-top: 1em;
+}
+
+.alert {
+    position: relative;
+    z-index: 1;
+    background-color: mix($bg-secondary, $color-mix, 10);
+    border: 1px solid mix($color-default, $color-mix, 70);
+    margin-bottom: 1em;
+    .alert-icon {
+        font-size: 3em;
+        padding: 0.25em;
+        width: 1.5em;
+        text-align: center;
+    }
+    .alert-close {
+        font-size: 0.8em;
+        padding: 0.4em;
+        cursor: pointer;
+        transition: color ease 0.3s;
+        &:hover {
+            color: $font-secondary;
+        }
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: inherit;
+    }
+    &.fade-out {
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-50%);
+    }
+    // Info
+    &.alert-info {
+        color: mix($color-info, $color-mix, 70);
+        background-color: mix($color-info, $color-mix, 10);
+        border: 1px solid mix($color-info, $color-mix, 70);
+    }
+    // Succes
+    &.alert-succes {
+        color: mix($color-succes, $color-mix, 70);
+        background-color: mix($color-succes, $color-mix, 10);
+        border: 1px solid mix($color-succes, $color-mix, 70);
+    }
+    // Warning
+    &.alert-warning {
+        color: mix($color-warning, $color-mix, 70);
+        background-color: mix($color-warning, $color-mix, 10);
+        border: 1px solid mix($color-warning, $color-mix, 70);
+    }
+    // Danger
+    &.alert-danger {
+        color: mix($color-danger, $color-mix, 70);
+        background-color: mix($color-danger, $color-mix, 10);
+        border: 1px solid mix($color-danger, $color-mix, 70);
+    }
+}
